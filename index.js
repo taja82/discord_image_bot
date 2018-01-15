@@ -5,6 +5,9 @@ var request = require('request');//파싱
 
 var replaceall = require('replaceall');
 
+var express = require('express');
+var app     = express();
+
 var Events = Discordie.Events;
 
 var client = new Discordie();

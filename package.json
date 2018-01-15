@@ -4,7 +4,8 @@
 "start": "node index.js"
 },
 "engines": {
-    "node": "6.11.1"
+    "node": "6.11.4",
+	"npm": "3.10.10"
   },
 "dependencies": {
 	"discordie": "^0.11.0",
