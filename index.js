@@ -35,9 +35,11 @@ console.log("Connected as: " + client.User.username);
 client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
 if (e.message.content == "ping")
 e.message.channel.sendMessage("pong");
-if (e.message.content == "random") {
+console.log(e.message.content.substring(0, 8));
+console.log(e.message.content.substring(6));
+if (e.message.content.substring(0, 8) == "random_") {
 	var rooturl = 'http://safebooru.org/';
-	var url = 'http://safebooru.org/index.php?page=post&s=list&tags=kafuu_chino&pid=' + getRandomInt(1,10)*40;  
+	var url = 'http://safebooru.org/index.php?page=post&s=list&tags=' + e.message.content.substring(6) + '&pid=' + getRandomInt(1,10)*40;  
 	request(url, function(error, response, html){  
     if (error) {throw error};
 
