@@ -23,7 +23,7 @@ function getRandomInt(min, max) { //min ~ max 사이의 임의의 정수 반환
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-client.connect({ token: "NDAyMzUxMDYyNTQ5NTI4NTc3.DT3rTA.XrxprKRpJ8W221oTLBqjrcQy9Gc" });
+client.connect({ token: "NDAyNTcwNzk3MTE1NTA2Njg4.DT6q0A.tWjEzhy_HaEpudMmqifd3cvbmaA" });
 
 client.Dispatcher.on(Events.GATEWAY_READY, e => {
 console.log("Connected as: " + client.User.username);
