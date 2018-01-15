@@ -9,6 +9,13 @@ var Events = Discordie.Events;
 
 var client = new Discordie();
 
+
+
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+
+
 function getRandomInt(min, max) { //min ~ max 사이의 임의의 정수 반환
     return Math.floor(Math.random() * (max - min)) + min;
 }
