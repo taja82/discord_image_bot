@@ -71,7 +71,7 @@ if (e.message.content.substring(0, 7) == "random_") {
 		console.log("이미지링크 : " + "http:" + imgurl);
 		//replaceall("thumbnails","samples",imgurl);
 		if(imgurl != null) {
-			e.message.channel.sendMessage("",false,{image:{url:"http:" + imgurl}});
+			e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(0,1)}});
 		} else {
 			e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
 		}
