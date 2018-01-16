@@ -17,7 +17,12 @@ var client = new Discordie();
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
+app.get('/', function (req, res) {
+   //res.send('Hello World!');
+   res.sendFile(__dirname + '/index.html');
+});
 
+출처: http://lazydev.tistory.com/48 [Kern]
 
 function getRandomInt(min, max) { //min ~ max 사이의 임의의 정수 반환
     return Math.floor(Math.random() * (max - min)) + min;
@@ -76,12 +81,3 @@ if (e.message.content.substring(0, 7) == "random_") {
 	//e.message.channel.sendMessage(ran);
 }
 });
-<!Doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>여긴 왜 들어오신거죠?</title>
-</head>
-<body>
-</body>
-</html>
