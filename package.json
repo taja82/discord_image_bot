@@ -11,7 +11,8 @@
 	"discordie": "^0.11.0",
 	"cheerio": "^1.0.0-rc.2",
 	"request": "^2.83.0",
-	"replaceall": "^0.1.6"
+	"replaceall": "^0.1.6",
+	"promise": "^8.0.1"
 },
 "keywords": [
     "node",

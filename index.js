@@ -70,11 +70,11 @@ if (e.message.content.substring(0, 7) == "random_") {
 		//replaceall("thumbnails","samples",imgurl);
 		console.log("이미지링크 : " + "http:" + imgurl);
 		//replaceall("thumbnails","samples",imgurl);
-		if(imgurl != 'undefined') {
+		//if(imgurl !== 'undefined') {
 			e.message.channel.sendMessage("",false,{image:{url:"http:" + imgurl}});
-		} else {
-			e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
-		}
+		//} else {
+		//	e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
+		//}
     //})
 
 });
