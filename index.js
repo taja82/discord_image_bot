@@ -48,7 +48,7 @@ if (e.message.content.substring(0, 7) == "random_") {
 
     var $ = cheerio.load(html);
 	//url = rooturl + $('span.thumb').find("a").eq(getRandomInt(1,40)).attr("href");
-	var imgurl = "http:" + $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
+	var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
     //$('span.thumb').each(function(){
 		
         
@@ -63,9 +63,13 @@ if (e.message.content.substring(0, 7) == "random_") {
 		*/
 		imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
 		//replaceall("thumbnails","samples",imgurl);
-		console.log("이미지링크 : " + imgurl);
+		console.log("이미지링크 : " + "http:" + imgurl);
 		//replaceall("thumbnails","samples",imgurl);
-		e.message.channel.sendMessage("",false,{image:{url:imgurl}});
+		if(imgurl != undefined) {
+			e.message.channel.sendMessage("",false,{image:{url:"http:" + imgurl}});
+		} else {
+			e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
+		}
     //})
 
 });
