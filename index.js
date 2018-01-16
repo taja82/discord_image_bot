@@ -61,11 +61,11 @@ if (e.message.content.substring(0, 7) == "random_") {
 		e.message.channel.sendMessage(url,false,{image:{url:"http:" + $('img#image').attr("src")}});
 		});
 		*/
-		imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
+		imgurl = "http:" + imgurl.replace("thumbnails","images").replace("thumbnail_","");
 		//replaceall("thumbnails","samples",imgurl);
 		console.log("이미지링크 : " + "http:" + imgurl);
 		//replaceall("thumbnails","samples",imgurl);
-		if(imgurl != undefined) {
+		if(imgurl != 'undefined') {
 			e.message.channel.sendMessage("",false,{image:{url:"http:" + imgurl}});
 		} else {
 			e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
@@ -76,4 +76,12 @@ if (e.message.content.substring(0, 7) == "random_") {
 	//e.message.channel.sendMessage(ran);
 }
 });
-
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>여긴 왜 들어오신거죠?</title>
+</head>
+<body>
+</body>
+</html>
