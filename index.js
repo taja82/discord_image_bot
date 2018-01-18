@@ -52,25 +52,23 @@ if (e.message.content.substring(0, 7) == "random_") {
 
    //console.log (html);
 
-    //var $ = cheerio.load(html);
-	//url = rooturl + $('span.thumb').find("a").eq(getRandomInt(1,40)).attr("href");
+    var $ = cheerio.load(html);
+	url = rooturl + $('span.thumb').find("a").eq(getRandomInt(1,40)).attr("href");
 	
-    //$('span.thumb').each(function(){
+    $('span.thumb').each(function(){
 		
         
 		
-		/*request(url, function(error, response, html){  
+		request(url, function(error, response, html){  
 		if (error) {throw error};
 		$ = cheerio.load(html);
 		url = "http:" + $('img#image').attr("src");
 		console.log("이미지링크 : " + url);
 		e.message.channel.sendMessage(url,false,{image:{url:"http:" + $('img#image').attr("src")}});
 		});
-		*/
-		//imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
-		//replaceall("thumbnails","samples",imgurl);
-		//console.log("이미지링크 : " + "http:" + imgurl);
-		//replaceall("thumbnails","samples",imgurl);
+		
+		imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
+		console.log("이미지링크 : " + "http:" + imgurl);
 		var options = {
 			uri: url,
 			transform: function (body) {
