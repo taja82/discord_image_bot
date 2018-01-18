@@ -5,6 +5,7 @@ var request = require('request');//파싱
 
 var replaceall = require('replaceall');
 var rp = require('request-promise');
+var Promise = require('promise');
 var express = require('express');
 var app     = express();
 
@@ -24,7 +25,7 @@ app.get('/', function (req, res) {
 
 
 
-function getRandomInt(min, max) { //min ~ max 사이의 임의의 정수 반환
+function getRandomInt(min, max) { //범위 내에서 랜덤 값 소환
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -77,7 +78,7 @@ if (e.message.content.substring(0, 7) == "random_") {
 			}
 		};
 
-		/*rp(options)
+		rp(options)
 			.then(function ($) {
 			// Process html like you would with jQuery...
 					var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
@@ -90,26 +91,30 @@ if (e.message.content.substring(0, 7) == "random_") {
 			.catch(function (err) {
 				e.message.channel.sendMessage("로딩에 실패하였습니다.");
 			});
-			*/
 			
-			var somevar = false;
-			var PTest = function () {
-				return new Promise(function (resolve, reject) {
-						resolve();
-				});
-			}
-			var myfunc = PTest();
-				myfunc.then(function () {
-				var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
-					imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
+			
+			
+			var asyncfunction = function(param){
+
+			return new Promise(function(resolved,rejected){
+
+			setTimeout(
+                 function(){
+                       var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");//사이트에 한 페이지의 40개의 이미지가 있기 때문에 랜덤으로 불러오기 위해 쓰임
+					imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");//텀브네일 사진을 일반 사진으로 바꿈
 					console.log("이미지링크 : " + "http:" + imgurl);
 					
-					e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});
+					e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});//그리고 소환
 					console.log(imgurl.substring(2));
-			}).catch(function () {
-				console.log("로딩 실패");
+                 },2000);
 			});
-			
+			}
+			var promise = asyncfunction(' terry ');
+			promise.then(console.log,console.err); // 여기가 비동기 결과에 대한 콜백함
+
+ 
+
+		
 		/*if(imgurl != null) {
 			e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});
 			console.log(imgurl.substring(2));
