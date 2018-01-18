@@ -92,7 +92,7 @@ if (e.message.content.substring(0, 7) == "random_") {
 			
 			
 			
-			var asyncfunction = function(param){
+			/*var asyncfunction = function(param){
 
 			return new Promise(function(resolved,rejected){
 
@@ -109,7 +109,7 @@ if (e.message.content.substring(0, 7) == "random_") {
 			}
 			var promise = asyncfunction(' terry ');
 			promise.then(console.log,console.err); // 여기가 비동기 결과에 대한 콜백함
-
+*/
  
 
 		
