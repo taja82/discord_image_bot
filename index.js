@@ -4,7 +4,7 @@ var cheerio = require('cheerio');//스크래핑
 var request = require('request');//파싱
 
 var replaceall = require('replaceall');
-
+var rp = require('request-promise');
 var express = require('express');
 var app     = express();
 
@@ -51,9 +51,9 @@ if (e.message.content.substring(0, 7) == "random_") {
 
    //console.log (html);
 
-    var $ = cheerio.load(html);
+    //var $ = cheerio.load(html);
 	//url = rooturl + $('span.thumb').find("a").eq(getRandomInt(1,40)).attr("href");
-	var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
+	
     //$('span.thumb').each(function(){
 		
         
@@ -66,15 +66,56 @@ if (e.message.content.substring(0, 7) == "random_") {
 		e.message.channel.sendMessage(url,false,{image:{url:"http:" + $('img#image').attr("src")}});
 		});
 		*/
-		imgurl = "http:" + imgurl.replace("thumbnails","images").replace("thumbnail_","");
+		//imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
 		//replaceall("thumbnails","samples",imgurl);
-		console.log("이미지링크 : " + "http:" + imgurl);
+		//console.log("이미지링크 : " + "http:" + imgurl);
 		//replaceall("thumbnails","samples",imgurl);
-		if(imgurl != null) {
-			e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(0,1)}});
+		var options = {
+			uri: url,
+			transform: function (body) {
+				return cheerio.load(body);
+			}
+		};
+
+		/*rp(options)
+			.then(function ($) {
+			// Process html like you would with jQuery...
+					var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
+					imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
+					console.log("이미지링크 : " + "http:" + imgurl);
+					
+					e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});
+					console.log(imgurl.substring(2));
+			})
+			.catch(function (err) {
+				e.message.channel.sendMessage("로딩에 실패하였습니다.");
+			});
+			*/
+			
+			var somevar = false;
+			var PTest = function () {
+				return new Promise(function (resolve, reject) {
+						resolve();
+				});
+			}
+			var myfunc = PTest();
+				myfunc.then(function () {
+				var imgurl = $('span.thumb').find("img").eq(getRandomInt(1,40)).attr("src");
+					imgurl = imgurl.replace("thumbnails","images").replace("thumbnail_","");
+					console.log("이미지링크 : " + "http:" + imgurl);
+					
+					e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});
+					console.log(imgurl.substring(2));
+			}).catch(function () {
+				console.log("로딩 실패");
+			});
+			
+		/*if(imgurl != null) {
+			e.message.channel.sendMessage("",false,{image:{url:imgurl.substring(2)}});
+			console.log(imgurl.substring(2));
 		} else {
 			e.message.channel.sendMessage("사진이 존재하지 않는 것 같습니다. 조건에 맞게 입력하셨는지 확인해 주시기 바랍니다.");
-		}
+		}*/
     //})
 
 });
