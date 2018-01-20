@@ -90,7 +90,7 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
 								console.log("이미지링크 : " + imgurl);
 								console.log("텀넬이미지 : " + thumburl);
 								//e.message.channel.sendMessage(imgurl,false,{image:{url:thumburl}});//그리고 소환
-								e.message.channel.sendMessage("",false,{image:{url:thumburl}});
+								e.message.channel.sendMessage("",false,{image:{url:imgurl}});
 							},2000
 						);
 					});
