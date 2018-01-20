@@ -7,10 +7,22 @@ var request = require('request');//파싱
 var replaceall = require('replaceall');
 var rp = require('request-promise');
 
+var express = require('express');
+var app     = express();
+
 var Events = Discordie.Events;//디스코드 이벤트
 
 var client = new Discordie();
- 
+
+
+
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+app.get('/', function (req, res) {
+   //res.send('Hello World!');
+   res.sendFile(__dirname + '/index.html');
+});
  
 function getRandomInt(min, max) { //범위 내에서 랜덤 값 소환
     return Math.floor(Math.random() * (max - min)) + min;
