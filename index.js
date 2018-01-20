@@ -101,5 +101,6 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
 			})
 		} else {
 			e.message.channel.sendMessage("명령어 형식에 맞지 않습니다. 다시 시도해 주세요.");
+		}
 	}
 })
