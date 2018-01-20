@@ -29,7 +29,7 @@ function getRandomInt(min, max) { //범위 내에서 랜덤 값 소환
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-client.connect({ token: "NDAyNTcwNzk3MTE1NTA2Njg4.DT6q0A.tWjEzhy_HaEpudMmqifd3cvbmaA" });//토큰
+client.connect({ token: "넣어주세요♥(...)" });//토큰
 
 client.Dispatcher.on(Events.GATEWAY_READY, e => {
 console.log("Connected as: " + client.User.username);

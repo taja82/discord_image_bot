@@ -28,7 +28,7 @@ function getRandomInt(min, max) { //범위 내에서 랜덤 값 소환
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-client.connect({ token: "NDAyNTcwNzk3MTE1NTA2Njg4.DT6q0A.tWjEzhy_HaEpudMmqifd3cvbmaA" });//토큰
+client.connect({ token: "여기에 넣어주세요" });//토큰. 디스코드 앱 하나 만들어서 토큰 알아오세요
 
 client.Dispatcher.on(Events.GATEWAY_READY, e => {
 	console.log("Connected as: " + client.User.username);//봇이 연결되었을때
@@ -89,8 +89,9 @@ client.Dispatcher.on(Events.MESSAGE_CREATE, e => {
 								imgurl = thumburl.replace("thumbnails","images").replace("thumbnail_","");
 								console.log("이미지링크 : " + imgurl);
 								console.log("텀넬이미지 : " + thumburl);
-								//e.message.channel.sendMessage(imgurl,false,{image:{url:thumburl}});//그리고 소환
-								e.message.channel.sendMessage("",false,{image:{url:imgurl}});
+								//이미지 불러오기
+								//e.message.channel.sendMessage(imgurl,false,{image:{url:thumburl}});//텀브넬에 원본 이미지 링크
+								e.message.channel.sendMessage("",false,{image:{url:imgurl}});//원본 이미지
 							},2000
 						);
 					});
